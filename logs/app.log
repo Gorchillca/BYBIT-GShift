@@ -21,3 +21,22 @@
 [2025-05-05 23:05:16] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
 [2025-05-05 23:05:17] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
 [2025-05-05 23:05:28] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
+[2025-05-05 23:43:04] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
+[2025-05-05 23:43:04] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
+[2025-05-05 23:46:15] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
+[2025-05-05 23:46:21] [ERR] Ошибка при получении баланса: 'latin-1' codec can't encode characters in position 0-6: ordinal not in range(256)
+[2025-05-05 23:46:22] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
+[2025-05-05 23:46:22] [ERR] Ошибка при получении баланса: 'latin-1' codec can't encode characters in position 0-6: ordinal not in range(256)
+[2025-05-05 23:46:26] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
+[2025-05-05 23:46:26] [ERR] Ошибка при получении баланса: 'latin-1' codec can't encode characters in position 0-6: ordinal not in range(256)
+[2025-05-05 23:46:30] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
+[2025-05-05 23:46:41] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
+[2025-05-05 23:46:41] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
+[2025-05-05 23:50:22] ❌ Ошибка при получении баланса: 'latin-1' codec can't encode characters in position 0-11: ordinal not in range(256)
+[2025-05-05 23:50:22] ❌ Ошибка при получении баланса: 'latin-1' codec can't encode characters in position 0-11: ordinal not in range(256)
+[2025-05-05 23:51:04] ❌ Ошибка при получении баланса: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
+[2025-05-05 23:51:05] ❌ Ошибка при получении баланса: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
+[2025-05-05 23:53:37] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
+[2025-05-05 23:53:48] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
+[2025-05-06 00:00:27] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
+[2025-05-06 00:00:32] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED

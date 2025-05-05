@@ -16,33 +16,41 @@ def generate_signature(api_key, api_secret, timestamp, recv_window, body):
         hashlib.sha256
     ).hexdigest()
 
-
 def get_balance(api_key, api_secret):
-    endpoint = "/v5/asset/coin/balance"
-    url = BASE_URL + endpoint
+    import time, hmac, hashlib, requests
+
+    url = "https://api.bybit.com/v5/account/wallet-balance"
     timestamp = str(int(time.time() * 1000))
     recv_window = "5000"
-    body = ""
-    sign = generate_signature(api_key, api_secret, timestamp, recv_window, body)
+    query_string = "accountType=UNIFIED"
+
+    signature_payload = f"{timestamp}{api_key}{recv_window}{query_string}"
+    signature = hmac.new(
+        bytes(api_secret, "utf-8"),
+        bytes(signature_payload, "utf-8"),
+        hashlib.sha256
+    ).hexdigest()
 
     headers = {
         "X-BAPI-API-KEY": api_key,
+        "X-BAPI-SIGN": signature,
         "X-BAPI-TIMESTAMP": timestamp,
-        "X-BAPI-RECV-WINDOW": recv_window,
-        "X-BAPI-SIGN": sign
+        "X-BAPI-RECV-WINDOW": recv_window
     }
 
-    try:
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-        data = response.json()
-        for coin in data.get("result", {}).get("balance", []):
-            if coin["coin"] == "USDT":
-                return float(coin["availableToWithdraw"])
-    except Exception as e:
-        log_event(f"[ERR] Ошибка при получении баланса: {e}")
-    return 0.0
+    params = {"accountType": "UNIFIED"}
+    response = requests.get(url, headers=headers, params=params)
+    response.raise_for_status()  # <-- теперь кидает ошибку если 401 или 404
 
+    data = response.json()
+    if data["retCode"] != 0:
+        raise Exception(f"API error: {data['retMsg']}")
+
+    for coin in data["result"]["list"][0]["coin"]:
+        if coin["coin"] == "USDT":
+            return float(coin["walletBalance"])
+
+    return 0.0
 
 def withdraw_to_uid(api_key, api_secret, uid, amount):
     endpoint = "/v5/asset/withdraw/create"
