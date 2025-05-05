@@ -1,5 +1,25 @@
-.venv/
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.pyc
-.env
-accounts.json
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# PyCharm project files
+.idea/
+
+# Mac OS system files
+.DS_Store
+
+# Log files
+*.log
+
+# Token/key/secret configs
+*.env
+*.pem
+
+# VS Code leftovers (если юзаешь)
+.vscode/

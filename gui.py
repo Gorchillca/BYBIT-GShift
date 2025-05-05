@@ -229,4 +229,8 @@ balances_text = tk.Text(frame_main, height=16, bg="#1e1e1e", fg="#d4d4d4", font=
 balances_text.pack(fill=BOTH, expand=True)
 
 refresh_account_list()
-root.mainloop()
+
+def main():
+    refresh_account_list()
+    root.mainloop()
+
