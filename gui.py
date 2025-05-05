@@ -30,38 +30,6 @@ def save_address_book(book):
         json.dump(book, f, indent=2, ensure_ascii=False)
 
 
-def get_balance(api_key, api_secret):
-    # Попытка получить баланс USDT через актуальный endpoint Bybit V5
-    import time, hmac, hashlib
-    url = "https://api.bybit.com/v5/account/wallet-balance"
-    timestamp = str(int(time.time() * 1000))
-    recv_window = "5000"
-    query_string = "accountType=UNIFIED"
-    signature_payload = f"{timestamp}{api_key}{recv_window}{query_string}"
-    signature = hmac.new(
-        bytes(api_secret, "utf-8"),
-        signature_payload.encode('utf-8'),
-        hashlib.sha256
-    ).hexdigest()
-    headers = {
-        "X-BAPI-API-KEY": api_key,
-        "X-BAPI-SIGN": signature,
-        "X-BAPI-TIMESTAMP": timestamp,
-        "X-BAPI-RECV-WINDOW": recv_window
-    }
-    params = {"accountType": "UNIFIED"}
-    response = requests.get(url, headers=headers, params=params)
-    response.raise_for_status()
-    data = response.json()
-    if data.get("retCode") != 0:
-        raise Exception(f"API error: {data.get('retMsg')}")
-    for entry in data.get("result", {}).get("list", []):
-        for coin in entry.get("coin", []):
-            if coin.get("coin") == "USDT":
-                return float(coin.get("walletBalance", 0))
-    return 0.0
-
-
 def validate_api_key(api_key, api_secret):
     try:
         balance = get_balance(api_key, api_secret)
