@@ -41,3 +41,5 @@
 [2025-05-06 00:00:27] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
 [2025-05-06 00:00:32] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
 [2025-05-06 00:06:52] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
+[2025-05-06 00:24:19] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
+[2025-05-06 00:24:35] ❌ Ошибка валидации ключа: API error: Permission denied, please check your API key permissions.
