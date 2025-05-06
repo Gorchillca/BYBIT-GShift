@@ -11,6 +11,8 @@ import requests
 # Константы
 ADDRESS_BOOK_FILE = "address_book.json"
 LOGO_PATH = "logo_g.png"
+# Порог для отображения баланса (устраняем мелкие дроби)
+BALANCE_THRESHOLD = 1e-4
 
 # Флаги для открытия только одного окна за раз
 account_window_opened = False
@@ -62,10 +64,13 @@ def confirm_and_transfer():
         label, key, secret = acc["label"], acc["api_key"], acc["api_secret"]
         try:
             balance = get_balance(key, secret)
-            balances_text.insert(tk.END, f"{label}: {balance} USDT\n")
-            if balance >= min_amount:
-                withdraw_to_uid(key, secret, uid, balance)
-                balances_text.insert(tk.END, f"→ Отправлено {balance} USDT на {uid}\n")
+            # Фильтр мелких дробей
+            display_balance = 0.0 if balance < BALANCE_THRESHOLD else balance
+            balances_text.insert(tk.END, f"{label}: {display_balance:.6f} USDT\n")
+            # Сравниваем с порогом на основании очищенного
+            if display_balance >= min_amount:
+                withdraw_to_uid(key, secret, uid, display_balance)
+                balances_text.insert(tk.END, f"→ Отправлено {display_balance:.6f} USDT на {uid}\n")
             else:
                 balances_text.insert(tk.END, f"[Пропущено] Баланс < {min_amount} USDT\n")
         except Exception as e:
@@ -157,7 +162,9 @@ def refresh_account_list():
             balance = get_balance(acc["api_key"], acc["api_secret"])
         except Exception:
             balance = 0.0
-        account_listbox.insert(tk.END, f"{acc['label']} (••••{short_key})  —  {balance} USDT")
+        # очистка дробей и формат
+        display_balance = 0.0 if balance < BALANCE_THRESHOLD else balance
+        account_listbox.insert(tk.END, f"{acc['label']} (••••{short_key})  —  {display_balance:.6f} USDT")
 
 
 def delete_selected_account():
@@ -200,7 +207,7 @@ def main():
 
     header_frame = tb.Frame(frame_main)
     header_frame.pack(pady=(0, 25))
-    inner_header = tb.Frame(header_frame)
+    inner_header = tk.Frame(header_frame)
     inner_header.pack(anchor='center')
 
     if os.path.exists(LOGO_PATH):
