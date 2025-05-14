@@ -1,45 +1,5 @@
-[2025-05-05 20:43:29] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 20:43:29] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:01:33] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:01:34] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:01:44] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:01:45] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:01:45] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:01:46] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:01:47] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:01:48] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:01:48] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:01:49] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:01:53] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:01:53] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:03:10] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:03:11] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:04:43] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:04:44] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:04:59] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:05:00] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:05:16] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:05:17] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:05:28] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:43:04] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:43:04] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:46:15] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:46:21] [ERR] Ошибка при получении баланса: 'latin-1' codec can't encode characters in position 0-6: ordinal not in range(256)
-[2025-05-05 23:46:22] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:46:22] [ERR] Ошибка при получении баланса: 'latin-1' codec can't encode characters in position 0-6: ordinal not in range(256)
-[2025-05-05 23:46:26] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:46:26] [ERR] Ошибка при получении баланса: 'latin-1' codec can't encode characters in position 0-6: ordinal not in range(256)
-[2025-05-05 23:46:30] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:46:41] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:46:41] [ERR] Ошибка при получении баланса: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/coin/balance
-[2025-05-05 23:50:22] ❌ Ошибка при получении баланса: 'latin-1' codec can't encode characters in position 0-11: ordinal not in range(256)
-[2025-05-05 23:50:22] ❌ Ошибка при получении баланса: 'latin-1' codec can't encode characters in position 0-11: ordinal not in range(256)
-[2025-05-05 23:51:04] ❌ Ошибка при получении баланса: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
-[2025-05-05 23:51:05] ❌ Ошибка при получении баланса: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
-[2025-05-05 23:53:37] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
-[2025-05-05 23:53:48] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
-[2025-05-06 00:00:27] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
-[2025-05-06 00:00:32] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
-[2025-05-06 00:06:52] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
-[2025-05-06 00:24:19] ❌ Ошибка валидации ключа: 401 Client Error: API key is invalid. for url: https://api.bybit.com/v5/account/wallet-balance?accountType=UNIFIED
-[2025-05-06 00:24:35] ❌ Ошибка валидации ключа: API error: Permission denied, please check your API key permissions.
+[2025-05-12 20:02:12] [ERR] Ошибка перевода: {'retCode': 131200, 'retMsg': 'server err : fromAccount can not be toAccount', 'result': {}, 'retExtInfo': {}, 'time': 1747069332370}
+[2025-05-12 20:06:19] [ERR] Ошибка перевода: {'retCode': 131002, 'retMsg': 'params error', 'result': {}, 'retExtInfo': {}, 'time': 1747069579262}
+[2025-05-12 20:13:59] [ERR] Ошибка перевода: {'retCode': 131002, 'retMsg': 'params error', 'result': {}, 'retExtInfo': {}, 'time': 1747070039307}
+[2025-05-12 20:43:04] [ERR] Ошибка запроса transfer: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/transfer/inter-user
+[2025-05-12 20:49:44] [ERR] Ошибка запроса transfer: 404 Client Error: Not Found for url: https://api.bybit.com/v5/asset/internal-transfer

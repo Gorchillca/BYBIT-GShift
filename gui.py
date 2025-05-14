@@ -2,22 +2,18 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 import tkinter as tk
 from tkinter import messagebox
-from bybit_api import get_balance, withdraw_to_uid
+from bybit_api import get_balance, transfer_to_uid
 from utils import load_accounts, save_accounts, log_event
 import json
 import os
-import requests
 
 # Константы
 ADDRESS_BOOK_FILE = "address_book.json"
 LOGO_PATH = "logo_g.png"
-# Порог для отображения баланса (устраняем мелкие дроби)
 BALANCE_THRESHOLD = 1e-4
 
-# Флаги для открытия только одного окна за раз
 account_window_opened = False
 recipient_window_opened = False
-
 
 def load_address_book():
     try:
@@ -26,11 +22,9 @@ def load_address_book():
     except:
         return []
 
-
 def save_address_book(book):
     with open(ADDRESS_BOOK_FILE, "w", encoding="utf-8") as f:
         json.dump(book, f, indent=2, ensure_ascii=False)
-
 
 def validate_api_key(api_key, api_secret):
     try:
@@ -40,7 +34,6 @@ def validate_api_key(api_key, api_secret):
         log_event(f"❌ Ошибка валидации ключа: {e}")
         messagebox.showerror("Невалидный ключ", f"Ошибка: {e}")
         return False
-
 
 def confirm_and_transfer():
     selected = address_combobox.get()
@@ -58,26 +51,28 @@ def confirm_and_transfer():
         return
     if not messagebox.askyesno("Подтверждение", f"Перевести все доступные USDT на: {recipient['value']}?\nПорог: {min_amount} USDT"):
         return
+
     uid = recipient["value"]
     balances_text.delete("1.0", tk.END)
+
     for acc in accounts:
         label, key, secret = acc["label"], acc["api_key"], acc["api_secret"]
         try:
             balance = get_balance(key, secret)
-            # Фильтр мелких дробей
             display_balance = 0.0 if balance < BALANCE_THRESHOLD else balance
             balances_text.insert(tk.END, f"{label}: {display_balance:.6f} USDT\n")
-            # Сравниваем с порогом на основании очищенного
             if display_balance >= min_amount:
-                withdraw_to_uid(key, secret, uid, display_balance)
-                balances_text.insert(tk.END, f"→ Отправлено {display_balance:.6f} USDT на {uid}\n")
+                success = transfer_to_uid(key, secret, uid, display_balance)
+                if success:
+                    balances_text.insert(tk.END, f"→ Отправлено {display_balance:.6f} USDT на {uid}\n")
+                else:
+                    balances_text.insert(tk.END, f"[ERR] Ошибка при переводе {display_balance:.6f} USDT на {uid}\n")
             else:
                 balances_text.insert(tk.END, f"[Пропущено] Баланс < {min_amount} USDT\n")
         except Exception as e:
             balances_text.insert(tk.END, f"[ERR] {label}: {e}\n")
         balances_text.insert(tk.END, "\n")
         balances_text.see(tk.END)
-
 
 def add_account():
     global account_window_opened
@@ -98,11 +93,13 @@ def add_account():
     ttk.Label(win, text="API Secret:").pack(pady=(10, 2))
     secret_entry = ttk.Entry(win, width=30, show="*")
     secret_entry.pack()
+
     def on_close():
         global account_window_opened
         account_window_opened = False
         win.destroy()
     win.protocol("WM_DELETE_WINDOW", on_close)
+
     def save():
         label = label_entry.get().strip()
         key = key_entry.get().strip()
@@ -116,8 +113,8 @@ def add_account():
         save_accounts(accounts)
         refresh_account_list()
         on_close()
-    ttk.Button(win, text="💾 Сохранить аккаунт", command=save, bootstyle=INFO).pack(pady=15)
 
+    ttk.Button(win, text="💾 Сохранить аккаунт", command=save, bootstyle=INFO).pack(pady=15)
 
 def add_recipient():
     global recipient_window_opened
@@ -135,11 +132,13 @@ def add_recipient():
     ttk.Label(win, text="UID или email:").pack(pady=(10, 2))
     val_entry = ttk.Entry(win, width=30)
     val_entry.pack(pady=2)
+
     def on_close():
         global recipient_window_opened
         recipient_window_opened = False
         win.destroy()
     win.protocol("WM_DELETE_WINDOW", on_close)
+
     def save():
         label = label_entry.get().strip()
         value = val_entry.get().strip()
@@ -151,8 +150,8 @@ def add_recipient():
         address_combobox["values"] = [a["label"] for a in address_book]
         address_combobox.set(label)
         on_close()
-    ttk.Button(win, text="💾 Сохранить", command=save, bootstyle=INFO).pack(pady=12)
 
+    ttk.Button(win, text="💾 Сохранить", command=save, bootstyle=INFO).pack(pady=12)
 
 def refresh_account_list():
     account_listbox.delete(0, tk.END)
@@ -162,10 +161,8 @@ def refresh_account_list():
             balance = get_balance(acc["api_key"], acc["api_secret"])
         except Exception:
             balance = 0.0
-        # очистка дробей и формат
         display_balance = 0.0 if balance < BALANCE_THRESHOLD else balance
         account_listbox.insert(tk.END, f"{acc['label']} (••••{short_key})  —  {display_balance:.6f} USDT")
-
 
 def delete_selected_account():
     idx = account_listbox.curselection()
@@ -177,7 +174,6 @@ def delete_selected_account():
     del accounts[idx[0]]
     save_accounts(accounts)
     refresh_account_list()
-
 
 def delete_selected_recipient():
     selected = address_combobox.get()
@@ -191,7 +187,6 @@ def delete_selected_recipient():
     save_address_book(address_book)
     address_combobox["values"] = [a["label"] for a in address_book]
     address_combobox.set("")
-
 
 def main():
     global root, accounts, address_book, frame_main, address_combobox, min_amount_entry, balances_text, account_listbox
@@ -249,5 +244,7 @@ def main():
     balances_text = tk.Text(frame_main, height=16, bg="#1e1e1e", fg="#d4d4d4", font=("JetBrains Mono", 10), wrap=WORD, bd=0, highlightthickness=0)
     balances_text.pack(fill=BOTH, expand=True)
 
+    tb.Label(frame_main, text="Софт разработан специально для Капи. Пользуясь случаем передаю привет маме. Мама я в телевизоре", foreground="#d4d4d4").pack(anchor="w", pady=(20, 5))
     refresh_account_list()
     root.mainloop()
+
